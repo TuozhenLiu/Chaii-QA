@@ -1,0 +1,22 @@
+python  ../input/transformers-master/examples/pytorch/xla_spawn.py --num_cores 1 \
+    ../input/transformers-master/examples/pytorch/question-answering/run_qa.py \
+    --model_name_or_path google/muril-large-cased \
+    --dataset_name squad_v2 \
+    --do_train \
+    --do_eval \
+    --version_2_with_negative \
+    --learning_rate 1e-5 \
+    --num_train_epochs 3 \
+    --max_seq_length 384 \
+    --evaluation_strategy steps \
+    --save_strategy steps \
+    --doc_stride 128 \
+    --weight_decay 0.01 \
+    --output_dir ./finetuned/ \
+    --warmup_ratio 0.2 \
+    --per_device_eval_batch_size 16  \
+    --per_device_train_batch_size 8   \
+    --save_total_limit 1 \
+    --overwrite_output_dir \
+    --eval_steps 30000 \
+    --save_steps 30000
